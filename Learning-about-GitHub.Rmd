@@ -28,5 +28,5 @@ ChickWeight %>%
   theme(legend.position = "none") +
   ggtitle("Chick Weight over Time by Diet") +
   xlab("Time (days)") +
-  ylab("Weight (grams)")
+  ylab("Weight (gram)")
 ```
