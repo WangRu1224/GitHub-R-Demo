@@ -13,10 +13,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Summary of Chick Weight Data
 ```{r CWsum}
-Summary(Chickweight)
-
+summary(ChickWeight)
+```
 # Chick weight plot
 
 ```{r CWplot}
-with(Chickweight, plot(Time, weight, col = Diet))
+library(ggplot2)
+library(dplyr)
+ChickWeight %>% 
+  ggplot(aes(Time, weight, colour=Diet)) +
+  geom_point() +
+  facet_wrap(~Diet) + 
+  stat_summary(fun.y="mean", geom="line", colour="black") +
+  theme(legend.position = "none") +
+  ggtitle("Chick Weight over Time by Diet") +
+  xlab("Time (days)") +
+  ylab("Weight (grams)")
 ```
